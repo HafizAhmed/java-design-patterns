@@ -204,7 +204,7 @@ public class BufferedReaderWriterTest {
      * @throws LoanException the generalized exception
      */
     @Test (expected = LoanException.class)
-    public void exceptionProduceTest2() throws LoanException{
+    public void exceptionProduceTest() throws LoanException{
         FileRead w = new FileRead();
         LenderUtils.lend(w,new Consumer<BufferedReader>(){
             Object[] parameters = new Object[]{"nonexist.txt"};
