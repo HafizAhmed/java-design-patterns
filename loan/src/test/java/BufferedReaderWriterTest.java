@@ -27,7 +27,7 @@ public class BufferedReaderWriterTest {
      * loan pattern
      */
     @Test
-    public void writeTest() {
+    public void writeReadTest() {
         String fileName = "test.txt";
         String test1 = "Test1";
         String test2 = "Test2";
@@ -100,7 +100,7 @@ public class BufferedReaderWriterTest {
      * loan pattern
      */
     @Test
-    public void appendTest() {
+    public void appendReadTest() {
         String fileName = "test.txt";
         String test1 = "Test1";
         String test2 = "Test2";
@@ -182,7 +182,7 @@ public class BufferedReaderWriterTest {
      * @throws LoanException the generalized exception
      */
     @Test (expected = LoanException.class)
-    public void exceptionTest() throws LoanException{
+    public void exceptionConsumeTest() throws LoanException{
         FileWrite w = new FileWrite();
         LenderUtils.lend(w,new Consumer<BufferedWriter>(){
             Object[] parameters = new Object[]{};
@@ -204,7 +204,7 @@ public class BufferedReaderWriterTest {
      * @throws LoanException the generalized exception
      */
     @Test (expected = LoanException.class)
-    public void exceptionTest2() throws LoanException{
+    public void exceptionProduceTest2() throws LoanException{
         FileRead w = new FileRead();
         LenderUtils.lend(w,new Consumer<BufferedReader>(){
             Object[] parameters = new Object[]{"nonexist.txt"};
