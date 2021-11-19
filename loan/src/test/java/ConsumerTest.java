@@ -84,7 +84,7 @@ public class ConsumerTest {
      * test getParameters of PrintWriter Consumer
      */
     @Test
-    public void PrintWriterConsumerGetParameterTest() {
+    public void printWriterConsumerGetParameterTest() {
         try{
             assertEquals(System.out,(OutputStream)printWriterConsumer.getParameter()[0]);
             assertEquals(true,(boolean)printWriterConsumer.getParameter()[1]);
@@ -96,7 +96,7 @@ public class ConsumerTest {
      * test consume of PrintWriter Consumer
      */
     @Test
-    public void PrintWriterConsumerConsumeTest() {
+    public void printWriterConsumerConsumeTest() {
 
         try{
             PrintWriter pw = new PrintWriter((OutputStream)printWriterConsumer.getParameter()[0],(boolean)printWriterConsumer.getParameter()[1]);

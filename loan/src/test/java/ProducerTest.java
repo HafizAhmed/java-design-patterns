@@ -45,7 +45,7 @@ public class ProducerTest {
      * test the produce of PrintWriter
      */
     @Test
-    public void PrintWriterProduceTest() {
+    public void printWriterProduceTest() {
         String testString = "Hello World!";
         try{
             Writer w = new Writer();
@@ -61,7 +61,7 @@ public class ProducerTest {
      * test produce of BufferedWriter producer
      */
     @Test
-    public void FileWriteProduceTest() {
+    public void fileWriteProduceTest() {
         String testString = "Hello World!";
         String fileName = "test.txt";
         try{
@@ -78,7 +78,7 @@ public class ProducerTest {
      * test produce of BufferedReader producer
      */
     @Test
-    public void FileReadProduceTest() {
+    public void fileReadProduceTest() {
         String testString = "Hello World!";
         String fileName = "test.txt";
         try{
@@ -100,7 +100,7 @@ public class ProducerTest {
      * test close of BufferedWriter producer
      */
     @Test (expected = IOException.class)
-    public void FileWriteCloseTest() throws LoanException,IOException{
+    public void fileWriteCloseTest() throws LoanException,IOException{
         String fileName = "test.txt";
         String testString = "Hello World!";
         FileWrite w = new FileWrite();
@@ -113,7 +113,7 @@ public class ProducerTest {
      * test close of BufferedReader producer
      */
     @Test (expected = IOException.class)
-    public void FileReadCloseTest() throws LoanException,IOException{
+    public void fileReadCloseTest() throws LoanException,IOException{
         String fileName = "test.txt";
         File file = new File(fileName);
         FileWriter fw = new FileWriter(file,true);
