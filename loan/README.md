@@ -7,12 +7,15 @@ Loan pattern allows programmers to reuse the code of creating resources.
 Based on the reference, I created a generalized loan pattern. Programmers only need to write new producers/consumers to use this pattern.
 
 ## Explanation
-
 Loan Pattern Website says
 
 > Loan pattern takes a “lending approach” i.e the code which keep hold of the resources “lends” if to the calling code. 
 > The lender (a.k.a code which holds resources) manages the resources once the lendee (code accessing the resource) has used it (with no interest ).
 
+ **Core Files**
+ 
+ Producer.java, Consumer.java, LenderUtils.java, LoanException.java
+ 
  **How to use**
 
 The following code shows the the Producer and Consumer interfaces and the LenderUtils. The producer is used to produce resources based 
