@@ -42,7 +42,7 @@ public class LenderUtils {
 
 ## Class diagram
 
-![alt text](./etc/Loan Pattern.png "Factory Method pattern class diagram")
+![alt text](./etc/Loan_Pattern.png "Factory Method pattern class diagram")
 
 ## Credits
 
