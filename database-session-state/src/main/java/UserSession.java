@@ -36,7 +36,7 @@ public class UserSession implements DatabaseSession {
 
 
     @Override
-    public void setAttribute(Preference value) throws SQLException {
+    public void setAttribute(Preference value) {
         this.preference = value;
 
     }

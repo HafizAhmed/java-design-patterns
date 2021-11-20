@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
-    private int userID;
+    private Integer userID;
     private String userName;
     private String password;
     private UserSession userSession;
@@ -15,6 +15,9 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.userSession = (UserSession) sessionManager.getSession(userName);
+    }
+
+    public User() {
     }
 
 
@@ -69,13 +72,16 @@ public class User {
         ResultSet rs = stmt.executeQuery();
         if (rs.next())
         {
-            String userSelectSql = "SELECT preferences.fontSize, preferences.fontColor FROM userData JOIN preferences ON userData.preferenceID=Preferences.preferenceID WHERE userData.userName = ? ";
-            PreparedStatement userSelectStmt = connection.prepareStatement(userSelectSql);
-            userSelectStmt.setString(1, this.userName);
-            ResultSet selectRs = userSelectStmt.executeQuery();
-            if (selectRs.next()) {
-                this.userSession.getAttribute().setFontSize(selectRs.getInt("fontSize"));
-                this.userSession.getAttribute().setFontColor(selectRs.getString("fontColor"));
+            this.userID = rs.getInt("userID");
+            if (isValidUser()) {
+                String userSelectSql = "SELECT preferences.fontSize, preferences.fontColor FROM userData JOIN preferences ON userData.preferenceID=Preferences.preferenceID WHERE userData.userName = ? ";
+                PreparedStatement userSelectStmt = connection.prepareStatement(userSelectSql);
+                userSelectStmt.setString(1, this.userName);
+                ResultSet selectRs = userSelectStmt.executeQuery();
+                if (selectRs.next()) {
+                    this.userSession.getAttribute().setFontSize(selectRs.getInt("fontSize"));
+                    this.userSession.getAttribute().setFontColor(selectRs.getString("fontColor"));
+                }
             }
         }
         else
@@ -117,6 +123,9 @@ public class User {
 
     }
 
+    public boolean isValidUser(){
+        return this.userID != null;
+    }
 
 
 
