@@ -1,4 +1,4 @@
-package serverSession;
+package serversession;
 
 import java.util.HashMap;
 import java.util.Map;

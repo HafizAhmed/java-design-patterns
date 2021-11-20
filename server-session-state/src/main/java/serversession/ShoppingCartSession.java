@@ -1,9 +1,9 @@
-package serverSession;
+package serversession;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShoppingCartSession implements ServerSession {
+public final class ShoppingCartSession implements ServerSession {
     private Map<Merchandise, Integer> shoppingCart;
 
     public ShoppingCartSession() {

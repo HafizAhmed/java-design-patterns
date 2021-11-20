@@ -1,7 +1,6 @@
-package serverSession;
+package serversession;
 
 public class Customer {
-    private String customerId;
     private ShoppingCartSession cartSession;
 
     /**
@@ -10,7 +9,6 @@ public class Customer {
      * @param sessionManager manages all the sessions
      */
     public Customer(String customerId, ServerSessionManager sessionManager) {
-        this.customerId = customerId;
         this.cartSession = (ShoppingCartSession) sessionManager.getSession(customerId);
     }
 
@@ -21,7 +19,9 @@ public class Customer {
     public String showCart() {
         StringBuilder sb = new StringBuilder();
         for(Merchandise merchandise : cartSession.getShoppingCart().keySet()) {
-            sb.append(merchandise.getName() + " : " + cartSession.getAttribute(merchandise));
+            sb.append(merchandise.getName());
+            sb.append(" : ");
+            sb.append(cartSession.getAttribute(merchandise));
             sb.append("\n");
         }
         return sb.toString();

@@ -1,4 +1,4 @@
-package serverSession;
+package serversession;
 
 /**
  *  Each customer has one shopping cart session.
