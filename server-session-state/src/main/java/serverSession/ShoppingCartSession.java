@@ -12,7 +12,7 @@ public class ShoppingCartSession implements ServerSession {
 
     @Override
     public void setAttribute(Merchandise merchandise, Integer quantity) {
-        // add item into shopping cart
+
         shoppingCart.put(merchandise, shoppingCart.getOrDefault(merchandise, 0) + quantity);
     }
 
