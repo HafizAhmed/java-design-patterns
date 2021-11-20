@@ -1,4 +1,6 @@
-package temporal;
+package demo;
+
+import temporal.Customer;
 
 import java.time.LocalDate;
 

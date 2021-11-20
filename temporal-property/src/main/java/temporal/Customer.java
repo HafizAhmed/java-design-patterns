@@ -2,7 +2,7 @@ package temporal;
 
 import java.time.LocalDate;
 
-public class Customer {
+public final class Customer {
     private TemporalCollection temporalCollection;
 
     public Customer(String name) {
