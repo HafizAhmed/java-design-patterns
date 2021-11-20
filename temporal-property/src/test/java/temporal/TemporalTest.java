@@ -9,14 +9,14 @@ import static org.junit.Assert.assertEquals;
 public class TemporalTest {
 
     @Test(expected = NullPointerException.class)
-    public void customerAddressDateNotExist_ThrowException() {
+    public void customerAddressDateNotExist_ShouldThrowException() {
         Customer james = new Customer("James");
         james.setAddress("2320 Bargen Drive, BC", LocalDate.of(2020, 10, 1));
         james.getAddress(LocalDate.of(2009, 12, 12));
     }
 
     @Test
-    public void customerAddressDateEqualsPassedDate() {
+    public void customerAddressDateEqualsPassedDate_ShouldReturnCurrentAddress() {
         Customer Kate = new Customer("Kate");
         Kate.setAddress("2320 Bargen Drive, BC", LocalDate.of(2020, 10, 1));
         String addressFor2021 = Kate.getAddress(LocalDate.of(2021, 1, 1));
@@ -24,7 +24,7 @@ public class TemporalTest {
     }
 
     @Test
-    public void customerPassDateInTheMiddleOfDates() {
+    public void customerPassDateInTheMiddleOfDates_ShouldReturnOlderAddress() {
         Customer Randy = new Customer("Randy");
         Randy.setAddress("2320 Bargen Drive, BC", LocalDate.of(2018, 10, 1));
         Randy.setAddress("1998 Queue street, ON", LocalDate.of(2010, 9, 11));
@@ -32,7 +32,7 @@ public class TemporalTest {
         assertEquals("1998 Queue street, ON", addressFor2014);
     }
     @Test
-    public void customerSetThreeAddressGetOne() {
+    public void customerSetThreeAddress_whenRetrieveWithOneDate_ShouldGetOne() {
         Customer kevin = new Customer("Kevin");
         kevin.setAddress("13 Claremont Street, Toronto", LocalDate.of(2011, 10, 31));
         kevin.setAddress("8635 Yale Street, Halifax", LocalDate.of(2014, 9, 10));
@@ -41,14 +41,13 @@ public class TemporalTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void customerDonotSetAddress_ThrowException() {
+    public void customerDonotSetAddress_whenRetrive_ShouldThrowException() {
         Customer Sylvia = new Customer("Sylvia");
-        String addressFor2021 = Sylvia.getAddress(LocalDate.of(2021, 1, 1));
-
+        Sylvia.getAddress(LocalDate.of(2021, 1, 1));
     }
 
     @Test
-    public void customerSetFourAddressGetFour() {
+    public void customerSetFourAddress_whenRetriveWithCorrectDate_ShouldReturnFour() {
         Customer Andrew = new Customer("Andrew");
         Andrew.setAddress("1610 Quinpool Street, Halifax", LocalDate.of(2011, 10, 31));
         Andrew.setAddress("8635 Yale Street, Halifax", LocalDate.of(2014, 9, 10));
