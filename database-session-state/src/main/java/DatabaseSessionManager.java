@@ -33,8 +33,6 @@ public class DatabaseSessionManager {
         }
         else {
             userSession = new UserSession();
-            //byte[] array = new byte[32]; // length is bounded by 32
-            //new Random().nextBytes(array);
             String randomSessionID = RandomStringUtils.random(32, true, true);
             userSession.setSessionID(randomSessionID);
             userSession.setCreationTime(Timestamp.from(Instant.now()));
