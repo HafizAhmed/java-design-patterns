@@ -7,13 +7,23 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
 
-    private final String DB_Connection = "jdbc:mysql://localhost:3306/userSession?user=admin&password=testpwd";
+    private final static String DB_Connection = "jdbc:mysql://localhost:3306/userSession?user=admin&password=testpwd";
+
+    /**
+     * Used to get a database connection
+     * @return Connections
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
 
-        Connection connection = DriverManager.getConnection(DB_Connection);
-        return connection;
+
+        return DriverManager.getConnection(DB_Connection);
     }
 
+    /**
+     * Closes a database connection
+     * @param connection
+     */
     public void closeConnection(Connection connection) {
         try {
             if (connection != null)

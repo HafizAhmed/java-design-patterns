@@ -34,13 +34,20 @@ public class UserSession implements DatabaseSession {
         this.lastAccessTime = lastAccessTime;
     }
 
-
+    /**
+     * setAttribute method to set attributes related to the session, in this case user preference
+     * @param value
+     */
     @Override
     public void setAttribute(Preference value) {
         this.preference = value;
 
     }
 
+    /**
+     * getAttributes associated with the session, in this case user preference
+     * @return
+     */
     @Override
     public Preference getAttribute() {
         return this.preference;

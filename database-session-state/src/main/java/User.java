@@ -59,10 +59,19 @@ public class User {
         this.password = password;
     }
 
+
+    /**
+     *
+     * @return Preference from the User session
+     */
     public Preference getPreference() {
         return this.userSession.getAttribute();
     }
 
+    /**
+     * Initializes a new user by checking if they already exist in the database and adding them to the database in case the user isn't in the database
+     * @throws SQLException
+     */
     public void initializeUser() throws SQLException {
         DatabaseConnection db = new DatabaseConnection();
         Connection connection = db.getConnection();
@@ -91,10 +100,14 @@ public class User {
             insertStmt.setString(1, this.userName);
             insertStmt.setString(2, this.password);
             insertStmt.setString(3, this.userSession.getSessionID());
-            int insertedRows = insertStmt.executeUpdate();
         }
     }
 
+    /**
+     * Updates the database with user preference
+     * @param preference
+     * @throws SQLException
+     */
     public void updatePreference( Preference preference) throws SQLException {
         // Update Preference Table
         int fontSize = preference.getFontSize();
@@ -105,7 +118,6 @@ public class User {
         PreparedStatement insertStmt = connection.prepareStatement(preferenceSql);
         insertStmt.setInt(1, fontSize);
         insertStmt.setString(2, fontColor);
-        int insertedRows = insertStmt.executeUpdate();
 
         // Update User Table
         // Get The latest Preference ID
@@ -118,11 +130,14 @@ public class User {
         PreparedStatement userPreferenceStmt = connection.prepareStatement(userPreferenceSql);
         userPreferenceStmt.setInt(1, maxPreferenceId);
         userPreferenceStmt.setString(2, this.userName);
-        int insertedRowsIntoUser = userPreferenceStmt.executeUpdate();
 
 
     }
 
+    /**
+     * checks if a user is valid by checking if they have an assigned ID
+     * @return
+     */
     public boolean isValidUser(){
         return this.userID != null;
     }

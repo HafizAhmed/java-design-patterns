@@ -8,8 +8,13 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 public class DatabaseSessionManager {
-
-    DatabaseSession getSession(String userName) throws SQLException {
+    /**
+     * Checks the database if the user has an existing session and returns that session, otherwise creates a session
+     * @param userName
+     * @return DatabaseSession
+     * @throws SQLException
+     */
+   public DatabaseSession getSession(String userName) throws SQLException {
         DatabaseConnection db = new DatabaseConnection();
         Connection connection = db.getConnection();
         String sql = "SELECT session.sessionID , session.creationTime , session.lastAccessTime FROM userData JOIN session ON userData.sessionID = session.sessionID " +
@@ -39,13 +44,11 @@ public class DatabaseSessionManager {
             insertStmtSession.setString(1, userSession.getSessionID());
             insertStmtSession.setTimestamp(2,userSession.getCreationTime());
             insertStmtSession.setTimestamp(3, userSession.getLastAccessTime());
-            int updatedRowsSession = insertStmtSession.executeUpdate();
             String userSql = "UPDATE userData SET sessionID = ? WHERE userName = ?";
             PreparedStatement updateStmtUser = connection.prepareStatement(userSql);
             updateStmtUser.setString(1, userSession.getSessionID());
             updateStmtUser.setString(2,userName);
 
-            int updatedRowsUser = updateStmtUser.executeUpdate();
 
 
         }
