@@ -1,4 +1,8 @@
-package serverSession;
+package demo;
+
+import serversession.Customer;
+import serversession.Merchandise;
+import serversession.ServerSessionManager;
 
 public class ServerSessionDemo {
     public static void main(String[] args) {

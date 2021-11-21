@@ -1,9 +1,9 @@
-package serverSession;
+package serversession;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShoppingCartSession implements ServerSession {
+public final class ShoppingCartSession implements ServerSession {
     private Map<Merchandise, Integer> shoppingCart;
 
     public ShoppingCartSession() {
@@ -12,7 +12,7 @@ public class ShoppingCartSession implements ServerSession {
 
     @Override
     public void setAttribute(Merchandise merchandise, Integer quantity) {
-        // add item into shopping cart
+
         shoppingCart.put(merchandise, shoppingCart.getOrDefault(merchandise, 0) + quantity);
     }
 
