@@ -22,8 +22,9 @@ You need to write your own mappers classes which use DataMap.java and ColumnMap.
 
 ## Class diagram
 
-![alt text](./etc/Loan_Pattern.png "Loan Pattern Diagram")
+![alt text](./etc/Metadata_Mapping_Pattern.png "Metadata Mapping Pattern Diagram")
 
 ## Credits
 
-* [Loan pattern in Java (a.k.a lender lendee pattern)](https://www.javacodegeeks.com/2013/01/loan-pattern-in-java-a-k-a-lender-lendee-pattern.html)
+* [Metadata Mapping Pattern](https://www.sourcecodeexamples.net/2018/04/metadata-mapping-pattern.html)
+* [Patterns of Enterprise Application Architecture](https://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420/ref=asc_df_0321127420/?tag=hyprod-20&linkCode=df0&hvadid=312128454859&hvpos=&hvnetw=g&hvrand=15975451927881563630&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9022185&hvtargid=pla-422923047050&psc=1)
