@@ -3,6 +3,7 @@
 I use an Intellij plugin - QAPlug to run Findbugs and PMD report.
 
 FindBugs has no error.
+
 PMD has no error. 
 
 Screenshot result:
