@@ -1,46 +1,23 @@
-## Also known as
+## Full Name
 
-Lender/Lendee Pattern
+Object-Relational Metadata Mapping
 
 ## Intent
-Loan pattern allows programmers to reuse the code of creating resources.
-Based on the reference, I created a generalized loan pattern. Programmers only need to write new producers/consumers to use this pattern.
+
+Metadata Mapping pattern provides a simple way for programmers to map objects to database data.
 
 ## Explanation
-Loan Pattern Website says
+Patterns of Enterprise Application Architecture says
 
-> Loan pattern takes a “lending approach” i.e the code which keep hold of the resources “lends” if to the calling code. 
-> The lender (a.k.a code which holds resources) manages the resources once the lendee (code accessing the resource) has used it (with no interest ).
+> Much of the code that deals with object-relational mapping describes how fields in the database correspond to fields in in-memory objects. The resulting code tends to be tedious and repetitive to write. A Metadata Mapping allows developers to define the mappings in a simple tabular form, which can then be processed by generic code to carry out the details of reading, inserting, and updating the data.
 
  **Core Files**
  
- Producer.java, Consumer.java, LenderUtils.java, LoanException.java
+ DataMap.java ColumnMap.java
  
  **How to use**
 
-The following code shows the the Producer and Consumer interfaces and the LenderUtils. The producer is used to produce resources based 
-on parameters passed by consumers. The resource will be passed to consumer through LenderUtils. 
-Finally, the LenderUtils will close/release the resources. Programmers can call lend with producer object and consumer object.
-
-```java
-public interface Producer {
-    <T> T produce(Object...parameters) throws LoanException;
-    void close() throws LoanException;
-}
-
-public interface Consumer<T> {
-    void consume(T resource) throws LoanException;
-    Object[] getParameter() throws LoanException;
-}
-
-public class LenderUtils {
-    public static <T> void lend(Producer producer, Consumer<T> consumer) throws LoanException{
-            T resource = producer.produce(consumer.getParameter());
-            consumer.consume(resource);
-            producer.close();
-    }
-}
-```
+You need to write your own mappers classes which use DataMap.java and ColumnMap.java to do the mapping from objects to database data. You can take a look at the StudentMapper.java, Student.java and App.java to see how to write the mappers and use this design pattern.
 
 
 ## Class diagram
