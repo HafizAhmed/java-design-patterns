@@ -17,7 +17,7 @@ Patterns of Enterprise Application Architecture says
  
  **How to use**
 
-You need to write your own mappers classes which use DataMap.java and ColumnMap.java to do the mapping from objects to database data. You can take a look at the StudentMapper.java, Student.java and App.java to see how to write the mappers and use this design pattern.
+You need to write your own mappers classes which use DataMap.java and ColumnMap.java to do the mapping from objects to database data. You can take a look at the StudentMapper.java, Student.java and App.java to see how to write the mappers and use this design pattern. Feel free to add more methods to support different kinds of sql statements.
 
 
 ## Class diagram
