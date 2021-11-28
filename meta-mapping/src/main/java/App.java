@@ -1,6 +1,14 @@
 import java.sql.SQLException;
 
+/**
+ * Metadata Mapping pattern provides a simple way for programmers to map objects to database data.
+ */
 public class App {
+    /**
+     * a guideline of how to use the metadata mapping pattern
+     * @param args input args
+     * @throws SQLException sql exception
+     */
     public static void main(String[] args) throws SQLException {
         StudentMapper sm = new StudentMapper();
         sm.loadDataMap();

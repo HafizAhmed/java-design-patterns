@@ -1,23 +1,20 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 /**
  * Application test.
  */
 public class AppTest {
 
     /**
-     * Issue: Add at least one assertion to this test case.
-     * Solution: Inserted assertion to check whether the execution of the main method in {@link App}
-     * throws an exception.
+     * the application should not throw exception while executing
      */
-
     @Test
     public void shouldExecuteApplicationWithoutException() {
         try{
             App.main(new String[]{});
         } catch (Exception e) {
-            assertTrue(false);
+            fail();
         }
     }
 }

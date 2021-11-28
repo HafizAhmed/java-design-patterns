@@ -1,26 +1,41 @@
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.sql.SQLException;
 import java.util.Iterator;
-
 import static org.junit.Assert.assertEquals;
 
+/**
+ * DataMap Test
+ */
 public class DataMapTest {
     DataMap dataMap;
+
+    /**
+     * initialize the dataMap
+     */
     @Before
     public void createDataMap(){
         dataMap = new DataMap(Student.class, "student");
     }
+
+    /**
+     * test the get domain class
+     */
     @Test
     public void getDomainClassTest(){
         assertEquals(dataMap.getDomainClass(),Student.class);
     }
+
+    /**
+     * test the get table name
+     */
     @Test
     public void getTableNameTest(){
         assertEquals(dataMap.getTableName(),"student");
     }
+
+    /**
+     * test the add and get column into/from the columnMap List
+     */
     @Test
     public void addAndGetColumnTest(){
         String[] columnName = new String[]{"id","firstname","lastname","score"};
@@ -31,14 +46,18 @@ public class DataMapTest {
         dataMap.addColumn(columnName[3],fieldName[3]);
 
         int index = 0;
-        for (Iterator it = dataMap.getColumn(); it.hasNext();){
-            ColumnMap columnMap = (ColumnMap) it.next();
+        for (Iterator<ColumnMap> it = dataMap.getColumn(); it.hasNext();){
+            ColumnMap columnMap = it.next();
             assertEquals(columnMap.getColumnName(),columnName[index]);
             assertEquals(columnMap.getFieldName(),fieldName[index]);
             assertEquals(columnMap.getDataMap(),dataMap);
             index+=1;
         }
     }
+
+    /**
+     * test the update sql statement string
+     */
     @Test
     public void updateListTest(){
         String[] columnName = new String[]{"id","firstname","lastname","score"};
@@ -49,6 +68,10 @@ public class DataMapTest {
         dataMap.addColumn(columnName[3],fieldName[3]);
         assertEquals(dataMap.updateList(), " SET firstname=?,lastname=?,score=?");
     }
+
+    /**
+     * test the insert sql statement string
+     */
     @Test
     public void insertListTest(){
         String[] columnName = new String[]{"id","firstname","lastname","score"};
