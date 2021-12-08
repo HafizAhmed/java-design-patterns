@@ -35,9 +35,14 @@ public interface Consumer<T> {
 
 public class LenderUtils {
     public static <T> void lend(Producer producer, Consumer<T> consumer) throws LoanException{
+        try{
             T resource = producer.produce(consumer.getParameter());
             consumer.consume(resource);
+        } catch (Exception e) {
+            throw new LoanException(e.getMessage(),e);
+        } finally{
             producer.close();
+        }
     }
 }
 ```
