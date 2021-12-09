@@ -8,30 +8,37 @@ public class NormalizedIndexTable extends TableManager {
 
     private Map<String, Table> tableMap;
     private String primaryKey;
-    public NormalizedIndexTable(Table baseTable){
-        super(baseTable);
-        this.primaryKey = baseTable.getTableKey();
+    private PrimaryTable primaryTable;
+
+    public NormalizedIndexTable(PrimaryTable primaryTable){
+        super(primaryTable);
+        this.primaryTable = primaryTable;
+        this.primaryKey = primaryTable.getTableKey();
         this.tableMap=super.getTableMap();
+        this.primaryTable.setNormalizedTableManager(this);
     }
 
     @Override
-    protected Table createNewTable(Table baseTable,String newTableKey) {
+    protected Table createNewTable(PrimaryTable primaryTable,String newTableKey) {
         Table newTable = new Table(newTableKey);
-        for (String key : baseTable.getDataStore().keySet()) {
-            List<Data> data = baseTable.getDataByKey(key);
-            for(Data d : data){
-                String[] tempValues = d.getValue().split(",");
+        for (String key : primaryTable.getDataStore().keySet()) {
+            Data data = primaryTable.getDataByKey(key);
+            String[] tempValues = data.getValue().split(",");
                 for(String tempValue : tempValues){
                     if(tempValue.contains(newTableKey)){
-                        String temp = baseTable.getTableKey() +": "+d.getKey();
+                        String temp = primaryTable.getTableKey() +": "+data.getKey();
                         newTable.storeData(new Data(tempValue,temp));
                     }
                 }
-            }
         }
         return newTable;
     }
 
+    /**
+     * method to retrieve data with given key value
+     * @param key string value representing key of data
+     * @return list of data whose key is key
+     */
     @Override
     public List<Data> getDataByKey( String key) {
         List<Data> tempData = new ArrayList<>();
@@ -42,16 +49,20 @@ public class NormalizedIndexTable extends TableManager {
                 tempData = table.getValue().getDataByKey(key);
             }
         }
-        if(primaryKey.equals(key.split(": ")[0])){
-            data = tempData;
-        }
-        else{
-            for(Data d : tempData){
-                data.add((Data) tableMap.get(primaryKey).getDataByKey(d.getValue()).toArray()[0]);
+        for(Data d : tempData){
+            for(String s : d.getValue().split(",")){
+                if(s.contains(primaryKey+":")){
+                    String[] tempKey = s.split(": ");
+                    data.add((Data) primaryTable.getDataByKey(tempKey[1]));
+                }
             }
         }
-
         return data;
+    }
+
+    @Override
+    protected int getTableMapSize(){
+        return this.tableMap.size();
     }
 
 }

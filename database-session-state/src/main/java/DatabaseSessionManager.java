@@ -42,11 +42,12 @@ public class DatabaseSessionManager {
             insertStmtSession.setString(1, userSession.getSessionID());
             insertStmtSession.setTimestamp(2,userSession.getCreationTime());
             insertStmtSession.setTimestamp(3, userSession.getLastAccessTime());
+            int insertedSession = insertStmtSession.executeUpdate();
             String userSql = "UPDATE userData SET sessionID = ? WHERE userName = ?";
             PreparedStatement updateStmtUser = connection.prepareStatement(userSql);
             updateStmtUser.setString(1, userSession.getSessionID());
             updateStmtUser.setString(2,userName);
-
+            int updatedUserData = updateStmtUser.executeUpdate();
 
 
         }
