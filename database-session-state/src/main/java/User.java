@@ -133,6 +133,7 @@ public class User {
         PreparedStatement userPreferenceStmt = connection.prepareStatement(userPreferenceSql);
         userPreferenceStmt.setInt(1, maxPreferenceId);
         userPreferenceStmt.setString(2, this.userName);
+        int updatedPreference = userPreferenceStmt.executeUpdate();
 
 
     }
