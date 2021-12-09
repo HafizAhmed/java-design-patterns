@@ -100,6 +100,8 @@ public class User {
             insertStmt.setString(1, this.userName);
             insertStmt.setString(2, this.password);
             insertStmt.setString(3, this.userSession.getSessionID());
+            int insertedUser = insertStmt.executeUpdate();
+
         }
     }
 
@@ -118,6 +120,7 @@ public class User {
         PreparedStatement insertStmt = connection.prepareStatement(preferenceSql);
         insertStmt.setInt(1, fontSize);
         insertStmt.setString(2, fontColor);
+        int insertedPreferences = insertStmt.executeUpdate();
 
         // Update User Table
         // Get The latest Preference ID
